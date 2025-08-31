@@ -20,12 +20,14 @@ int	parsing(int argc, char **argv, char **envp)
 	if (parse_it(argc, argv, envp) == 0)
 		return (printf("Incorrect number\n"), 0);
 	if (parse_it(argc, argv, envp) == 1)
-		return (printf("number out of limits\n"), 0);
+		return (printf("Number out of limits\n"), 0);
 	if (parse_it(argc, argv, envp) == 2)
 		return (printf("Incorrect number \n"), 0);
 	if (parse_it(argc, argv, envp) == 3)
 		return (printf("One philosopher is needed at least !\n"), 0);
 	if (parse_it(argc, argv, envp) == 4)
-		return (printf("Negative number\n"), 0);	
+		return (printf("Negative number\n"), 0);
+	if (argv[5] && argv[5][0] == '0')
+		return (printf("No meals today. The philosophers remain hungry...\n"));
 	return (-1);
 }
