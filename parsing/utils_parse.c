@@ -1,15 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_parse.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: safamran <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/01 13:12:11 by safamran          #+#    #+#             */
+/*   Updated: 2025/09/01 13:16:57 by safamran         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philosophers.h"
 
-int incorrect_number(char *str)
+int	incorrect_number(char *str)
 {
-	int a;
+	int	a;
 
 	if (!str)
 		return (0);
 	a = 0;
 	if ((str[a] == '-' || str[a] == '+') && str[a + 1] == '\0')
 		return (0);
-	while(str[a] == '+' || str[a] == '-')
+	while (str[a] == '+' || str[a] == '-')
 		a++;
 	while (str[a] != '\0')
 	{
@@ -22,17 +34,16 @@ int incorrect_number(char *str)
 	return (1);
 }
 
-int parse_it(int argc, char *argv[], char **envp)
+int	parse_it(int argc, char *argv[], char **envp)
 {
-	(void)envp;
-	int a;
-	long n;
+	int		a;
+	long	n;
 
+	(void)envp;
 	a = argc - 1;
 	while (a > 0)
 	{
 		n = ft_atol(argv[a]);
-		//printf("n = %d\n", (int)n);
 		if (incorrect_number(argv[a]) == 0)
 			return (0);
 		if (n > INT_MAX)
@@ -42,8 +53,8 @@ int parse_it(int argc, char *argv[], char **envp)
 		if (a == 1 && n == 0)
 			return (3);
 		if (n < 0)
-			return (4);		
-	a--;
+			return (4);
+		a--;
 	}
 	return (-1);
 }
@@ -73,11 +84,11 @@ int	ft_atoi(const char *nptr)
 	return (signe * result);
 }
 
-long ft_atol(char *str)
+long	ft_atol(char *str)
 {
-	long result;
-	long signe;
-	int a;
+	long	result;
+	long	signe;
+	int		a;
 
 	a = 0;
 	signe = 1;

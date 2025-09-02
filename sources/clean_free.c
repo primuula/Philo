@@ -1,26 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   clean_free.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: safamran <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/01 13:19:03 by safamran          #+#    #+#             */
+/*   Updated: 2025/09/01 13:19:14 by safamran         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philosophers.h"
 
-void free_forks_mutex(t_table *table, int i)
+void	free_forks_mutex(t_table *table, int i)
 {
-    int n;
+	int	n;
 
-    n = 0;
-    while (n < i)
-    {
-        pthread_mutex_destroy(&table->forks[n]);
-        n++;
-    }
-    free(table->forks);
+	n = 0;
+	while (n < i)
+	{
+		pthread_mutex_destroy(&table->forks[n]);
+		n++;
+	}
+	free(table->forks);
 }
 
-void free_all_mutexes(t_table *table)
+void	free_all_mutexes(t_table *table)
 {
-    free_forks_mutex(table, table->nb_philo);
-    pthread_mutex_destroy(&table->print_state);
-    pthread_mutex_destroy(&table->meal_lock);
-    pthread_mutex_destroy(&table->death_lock);
+	free_forks_mutex(table, table->nb_philo);
+	pthread_mutex_destroy(&table->print_state);
+	pthread_mutex_destroy(&table->meal_lock);
+	pthread_mutex_destroy(&table->death_lock);
 }
-
-// cas 1 philo pas a gerer check sujet
-
-// start simule pour le cas d un philo
